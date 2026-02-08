@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What A Sandwich | Digital Menu</title>
+
+<style>
+body{
+  margin:0;
+  position:relative;
+  background:#000;
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+    url("images/gym-bg.jpg") no-repeat center center / cover;
+  z-index:-1;
+}
+
+/* HEADER */
+.header img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* NAV */
+.nav-bar{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:12px;
+  background:#121212;
+}
+.nav-btn{
+  background:rgba(246,194,107,0.35);
+  color:#000;
+  border:1px solid rgba(246,194,107,0.6);
+  padding:10px 16px;
+  border-radius:20px;
+  white-space:nowrap;
+  font-size:14px;
+}
+.nav-btn.active{
+  background:#f6c26b;
+  color:#000;
+  box-shadow:0 2px 8px rgba(246,194,107,0.6);
+}
+
+/* SECTION */
+.section{
+  padding:16px;
+}
+.section h2{
+  margin:0 0 6px;
+}
+.section h3{
+  margin:14px 0 8px;
+}
+
+/* ITEM CARD */
+.item{
+  display:flex;
+  gap:12px;
+  background: rgba(255, 223, 120, 0.92);
+  color:#000;
+  backdrop-filter: blur(6px);
+  padding:12px;
+  border-radius:14px;
+  margin-bottom:12px;
+}
+.item img{
+  width:80px;
+  height:80px;
+  border-radius:12px;
+  object-fit:cover;
+}
+.info{
+  flex:1;
+}
+.info h4{
+  margin:0 0 4px;
+}
+.info p{
+  margin:0;
+  font-size:13px;
+  opacity:.85;
+}
+
+/* PRICE BUTTONS */
+.actions{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  justify-content:center;
+}
+.actions button{
+  background:#f6c26b;
+  border:none;
+  border-radius:16px;
+  padding:6px 10px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.actions button span{
+  margin:0 6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.mini-btn{
+  background:none;
+  border:none;
+  font-size:18px;
+  font-weight:bold;
+  padding:4px 8px;
+  cursor:pointer;
+}
+
+.mini-qty{
+  margin:0 6px;
+  font-weight:700;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="images/header/header-bg.jpg" alt="What A Sandwich">
+</div>
+
+<!-- NAVIGATION -->
+<!-- FIXED NAVIGATION -->
+<div class="nav-wrapper">
+  <div class="nav-bar" id="navBar">
+    <button class="nav-btn active" data-target="submarine">🥪 Submarine</button>
+    <button class="nav-btn" data-target="salad">🥗 Salad</button>
+    <button class="nav-btn" data-target="sliced">🍞 Sliced</button>
+  </div>
+</div>
+
+<!-- ================= SUBMARINE SECTION ================= -->
+<div class="section" id="submarine">
+<h2>🥪 Submarine Sandwiches</h2>
+
+<h3>🟢 Vegetarian</h3>
+
+<!-- Veggie Classic -->
+<div class="item">
+  <img src="images/submarine/sub-veg-classic.jpg">
+  <div class="info">
+    <h4>Veggie Classic</h4>
+    <p>Your choice of vegetable toppings and house sauces.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹49</span><span class="new-price">₹32</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹99</span><span class="new-price">₹64</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Masala Veg -->
+<div class="item">
+  <img src="images/submarine/sub-masala-veg.jpg">
+  <div class="info">
+    <h4>Masala Veg</h4>
+    <p>Veggies, sauce and masala potato filling.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹99</span><span class="new-price">₹64</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹199</span><span class="new-price">₹129</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Aloo Masala -->
+<div class="item">
+  <img src="images/submarine/sub-aloo-masala.jpg">
+  <div class="info">
+    <h4>Aloo Masala</h4>
+    <p>Veggies, sauce and classic aloo tikki patty.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹139</span><span class="new-price">₹90</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹279</span><span class="new-price">₹181</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Veg Crispy -->
+<div class="item">
+  <img src="images/submarine/sub-veg-crispy.jpg">
+  <div class="info">
+    <h4>Veg Crispy</h4>
+    <p>Veggies, sauces and mix veg patty.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹149</span><span class="new-price">₹97</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹299</span><span class="new-price">₹195</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Spinach & Corn -->
+<div class="item">
+  <img src="images/submarine/sub-spinach-corn.jpg">
+  <div class="info">
+    <h4>Spinach & Corn</h4>
+    <p>Veggies, sauces and spinach & corn patty.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹169</span><span class="new-price">₹110</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹319</span><span class="new-price">₹207</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Cheesy Fingers -->
+<div class="item">
+  <img src="images/submarine/sub-mozzarella-fingers.jpg">
+  <div class="info">
+    <h4>Mozzarella Cheesy Fingers</h4>
+    <p>Veggies, sauces and cheese fingers.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹179</span><span class="new-price">₹116</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹339</span><span class="new-price">₹220</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Paneer Masala -->
+<div class="item">
+  <img src="images/submarine/sub-paneer-masala.jpg">
+  <div class="info">
+    <h4>Paneer Masala</h4>
+    <p>Veggies, sauces and paneer tikka masala.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹199</span><span class="new-price">₹129</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹399</span><span class="new-price">₹259</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Paneer Crackling -->
+<div class="item">
+  <img src="images/submarine/sub-paneer-crackling.jpg">
+  <div class="info">
+    <h4>Paneer Crackling</h4>
+    <p>Veggies, sauces and crackling paneer.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹199</span><span class="new-price">₹129</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹399</span><span class="new-price">₹259</span> (8")
+    </button>
+  </div>
+</div>
+
+<h3>🔴 Non-Vegetarian</h3>
+
+<!-- Chicken Chunks -->
+<div class="item">
+  <img src="images/submarine/sub-chicken-chunks.jpg">
+  <div class="info">
+    <h4>Chicken Chunks</h4>
+    <p>Veggies, sauces and fresh chicken chunks.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹149</span><span class="new-price">₹97</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹299</span><span class="new-price">₹195</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Chicken Crispy -->
+<div class="item">
+  <img src="images/submarine/sub-chicken-crispy.jpg">
+  <div class="info">
+    <h4>Chicken Crispy</h4>
+    <p>Veggies, sauces and crispy chicken patty.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹179</span><span class="new-price">₹116</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹359</span><span class="new-price">₹233</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Chicken Super -->
+<div class="item">
+  <img src="images/submarine/sub-chicken-super-patty.jpg">
+  <div class="info">
+    <h4>Chicken Super Patty</h4>
+    <p>Veggies, sauces and thick juicy chicken patty.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹189</span><span class="new-price">₹123</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹379</span><span class="new-price">₹247</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Chicken Seekh -->
+<div class="item">
+  <img src="images/submarine/sub-chicken-seekh.jpg">
+  <div class="info">
+    <h4>Chicken Seekh Sub</h4>
+    <p>Veggies, sauces and classic chicken seekh kebab.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹189</span><span class="new-price">₹123</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹379</span><span class="new-price">₹247</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Chicken Masala -->
+<div class="item">
+  <img src="images/submarine/sub-chicken-masala.jpg">
+  <div class="info">
+    <h4>Chicken Masala Sub</h4>
+    <p>Veggies, sauces and chicken tikka masala.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹199</span><span class="new-price">₹129</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹399</span><span class="new-price">₹259</span> (8")
+    </button>
+  </div>
+</div>
+
+<!-- Chicken Crackling -->
+<div class="item">
+  <img src="images/submarine/sub-chicken-crackling.jpg">
+  <div class="info">
+    <h4>Chicken Crackling</h4>
+    <p>Veggies, sauces and crackling chicken fillet.</p>
+  </div>
+  <div class="actions">
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹229</span><span class="new-price">₹149</span> (4")
+    </button>
+    <button onclick="addToCart(this)">
+      <span class="old-price">₹459</span><span class="new-price">₹299</span> (8")
+    </button>
+  </div>
+</div>
+
+</div>
+<!-- ================= END SUBMARINE ================= -->
+<!-- Above code contains: Header + Navigation + Full Submarine Menu -->
+<!-- Do NOT write anything for submarine below this point -->
+
+<!-- ===== NEXT SECTION (WRAPS / HERO / PANINI) START BELOW THIS LINE ===== -->
+<!-- ================== CHEESE TORTILLA WRAPS SECTION START ================== -->
+
+<!-- ================== WHAT’A SALAD SECTION START ================== -->
+<section class="section" id="salad">
+  <h2>🥗 What’a Salad!</h2>
+
+  <!-- 🟢 VEGETARIAN -->
+  <h3 class="veg">🟢 Vegetarian</h3>
+
+  <div class="item">
+    <img src="images/salad/salad-veg-classic.jpg">
+    <div class="info">
+      <h4>Veggie Classic Salad</h4>
+      <p>Salad made with all veggies and house sauces.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹99</span>
+        <span class="new-price">₹64</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/salad/salad-veg-crispy.jpg">
+    <div class="info">
+      <h4>Veg Crispy Salad</h4>
+      <p>Salad with veggies, sauces and mix veg patty.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹169</span>
+        <span class="new-price">₹110</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/salad/salad-paneer-masala.jpg">
+    <div class="info">
+      <h4>Paneer Masala Salad</h4>
+      <p>Salad with veggies, sauces and paneer masala.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹199</span>
+        <span class="new-price">₹129</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/salad/salad-paneer-crackling.jpg">
+    <div class="info">
+      <h4>Paneer Crackling Salad</h4>
+      <p>Salad with veggies, sauces and crackling paneer patty.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹199</span>
+        <span class="new-price">₹129</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 🔴 NON-VEGETARIAN -->
+  <h3 class="nonveg">🔴 Non-Vegetarian</h3>
+
+  <div class="item">
+    <img src="images/salad/salad-chicken-masala.jpg">
+    <div class="info">
+      <h4>Chicken Masala Salad</h4>
+      <p>Salad with veggies, sauces and chicken masala.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹179</span>
+        <span class="new-price">₹116</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/salad/salad-chicken-crispy.jpg">
+    <div class="info">
+      <h4>Chicken Crispy Salad</h4>
+      <p>Salad with veggies, sauces and crispy chicken.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹189</span>
+        <span class="new-price">₹123</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/salad/salad-chicken-seekh.jpg">
+    <div class="info">
+      <h4>Chicken Seekh Salad</h4>
+      <p>Salad with veggies, sauces and chicken seekh kebab.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹299</span>
+        <span class="new-price">₹195</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/salad/salad-chicken-crackling.jpg">
+    <div class="info">
+      <h4>Chicken Crackling Salad</h4>
+      <p>Salad with veggies, sauces and crackling chicken fillet.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹299</span>
+        <span class="new-price">₹195</span>
+      </button>
+    </div>
+  </div>
+
+</section>
+<!-- ================== WHAT’A SALAD SECTION END ================== -->
+<!-- ===== NEXT SECTION START BELOW THIS LINE ===== -->
+<!-- ===== NEXT SECTION START BELOW THIS LINE ===== -->
+
+
+<!-- ================= SLICED SANDWICH SECTION START ================= -->
+
+<section class="section" id="sliced">
+  <h2>🍞 What’ A Sliced Sandwich (Multigrain Bread)</h2>
+
+  <!-- 🟢 VEGETARIAN -->
+  <h3 class="veg">🟢 Vegetarian</h3>
+
+  <div class="item">
+    <img src="images/sliced/sliced-veg-simple.jpg">
+    <div class="info">
+      <h4>Simple Veg Sliced Sandwich</h4>
+      <p>Onion, tomato, capsicum and cheese sauce.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹49</span>
+        <span class="new-price">₹32</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/sliced/sliced-aloo-masala.jpg">
+    <div class="info">
+      <h4>Aloo Masala Sliced Sandwich Toast</h4>
+      <p>Masala aloo with cheese sauce, toasted.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹105</span>
+        <span class="new-price">₹69</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/sliced/sliced-cheese.jpg">
+    <div class="info">
+      <h4>Cheese Sliced Sandwich Toast</h4>
+      <p>Loaded cheese with veggies, toasted.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹105</span>
+        <span class="new-price">₹69</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 🔴 NON-VEGETARIAN -->
+  <h3 class="nonveg">🔴 Non-Vegetarian</h3>
+
+  <div class="item">
+    <img src="images/sliced/sliced-chicken-crispy.jpg">
+    <div class="info">
+      <h4>Chicken Crispy Sliced Sandwich Toasted</h4>
+      <p>Crispy chicken with veggies and cheese sauce.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹159</span>
+        <span class="new-price">₹103</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="item">
+    <img src="images/sliced/sliced-chicken-cheese.jpg">
+    <div class="info">
+      <h4>Chicken Crispy Cheese Sliced Sandwich</h4>
+      <p>Extra cheese, crispy chicken and veggies.</p>
+    </div>
+    <div class="actions">
+      <button onclick="addToCart(this)">
+        <span class="old-price">₹169</span>
+        <span class="new-price">₹110</span>
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= SLICED SANDWICH SECTION END ================= -->
+<!-- ADDRESS POPUP -->
+<div id="addressPopup" class="address-popup">
+  <div class="address-box">
+
+    <h3>📍 Delivery Details</h3>
+
+    <label>Full Name</label>
+    <input 
+      type="text" 
+      id="customerName" 
+      placeholder="Enter your full name"
+    />
+
+    <label>Delivery Address</label>
+    <textarea id="deliveryAddress" readonly>
+HOUSE OF STRENGTH,
+PKS TOWN CENTRAL,
+2nd Floor C-4, 16B,
+Town Central Service Rd,
+Greater Noida West,
+Uttar Pradesh 201009
+    </textarea>
+
+    <div class="address-actions">
+      <button onclick="document.getElementById('addressPopup').style.display='none'">
+        Cancel
+      </button>
+      <button onclick="confirmAddress()">
+        Continue
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== PART 3 : CART + NAV + DARK MODE ===================== -->
+
+<!-- DARK MODE BUTTON -->
+<button id="darkToggle" class="dark-btn">🌙</button>
+
+<!-- CART BUTTON -->
+<button class="cart-fab" onclick="openCart()">🛒</button>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<!-- CART PANEL -->
+<div id="cartPanel" class="cart-panel">
+
+  <!-- CART HEADER -->
+  <div class="cart-header">
+    <h3>🧾 Your Cart</h3>
+    <button onclick="closeCart()">✕</button>
+  </div>
+
+  <!-- CART BODY (SCROLLABLE) -->
+  <div class="cart-body">
+
+    <!-- CART ITEMS -->
+    <div id="cartItems" class="cart-items"></div>
+
+    <!-- ADD ONS -->
+    <div class="cart-addons">
+      <h4>➕ Add Ons</h4>
+
+      <div class="addon">
+        <span>Mozzarella & Cheddar Cheese</span>
+        <button onclick="addAddon('Mozzarella & Cheddar Cheese',99)">+ ₹99</button>
+      </div>
+      
+      <div class="addon">
+        <span>Spicy Peri Peri Sauce</span>
+        <button onclick="addAddon('Spicy Peri Peri Sauce',99)">+ ₹99</button>
+      </div>
+
+      <div class="addon">
+        <span>Extra Chicken Patty</span>
+        <button onclick="addAddon('Extra Chicken Patty',99)">+ ₹99</button>
+      </div>
+
+      <div class="addon">
+        <span>Cheese Sauce</span>
+        <button onclick="addAddon('Cheese Sauce',49)">+ ₹49</button>
+      </div>
+
+      <div class="addon">
+        <span>Extra Veg Patty</span>
+        <button onclick="addAddon('Extra Veg Patty',99)">+ ₹99</button>
+      </div>
+
+      <div class="addon">
+        <span>Coke</span>
+        <button onclick="addAddon('Coke',39)">+ ₹39</button>
+      </div>
+
+      <div class="addon">
+        <span>Cheese Alfredo Sauce</span>
+        <button onclick="addAddon('Cheese Alfredo Sauce',49)">+ ₹49</button>
+      </div>
+
+      <div class="addon">
+        <span>Peri Peri Sauce</span>
+        <button onclick="addAddon('Peri Peri Sauce',49)">+ ₹49</button>
+      </div>
+
+      <div class="addon">
+        <span>BBQ Sauce</span>
+        <button onclick="addAddon('BBQ Sauce',49)">+ ₹49</button>
+      </div>
+
+      <div class="addon">
+        <span>Honey Mustard Sauce</span>
+        <button onclick="addAddon('Honey Mustard Sauce',49)">+ ₹49</button>
+      </div>
+
+      <div class="addon">
+        <span>Mint Mayo</span>
+        <button onclick="addAddon('Mint Mayo',49)">+ ₹49</button>
+      </div>
+
+      <div class="addon">
+        <span>Chipotle Sauce</span>
+        <button onclick="addAddon('Chipotle Sauce',49)">+ ₹49</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CART FOOTER -->
+  <div class="cart-footer">
+    <div class="cart-total">
+      Total: <span id="cartTotal">₹0</span>
+    </div>
+
+    <button class="order-btn" onclick="placeOrder()">
+      Place Order
+    </button>
+  </div>
+
+</div>
+
+<style>
+/* ---------- DARK MODE ---------- */
+body.light{
+  background:#fff;
+  color:#000;
+}
+body.light .section,
+body.light .item,
+body.light .nav-wrapper{
+  background:#f4f4f4;
+  color:#000;
+}
+
+/* ---------- NAV FIX ---------- */
+.nav-wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1200;
+  background: rgba(10,10,10,0.9);
+  backdrop-filter: blur(8px);
+}
+body{
+  padding-top:70px; /* space for fixed nav */
+}
+body.light .nav-wrapper{
+  background:#fff;
+}
+/* ---------- DARK BUTTON ---------- */
+.dark-btn{
+  position:fixed;
+  right:16px;
+  top:80px;
+  z-index:1600;
+
+  font-size:22px;        /* ⬅ bigger icon */
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:none;
+  background:#f6c26b;
+}
+
+/* ---------- CART ---------- */
+.cart-fab{
+  position:fixed;
+  right:16px;
+  bottom:20px;
+  z-index:1500;
+
+  font-size:28px;        /* ⬅ bigger icon */
+  width:60px;            /* ⬅ button size */
+  height:60px;
+  border-radius:50%;
+  background:#f6c26b;
+  border:none;
+}
+
+.cart-panel{
+  position:fixed;
+  bottom:-100%;
+  left:0;
+  width:100%;
+  height:75%;
+  background:#111;
+  z-index:2000;
+  border-radius:16px 16px 0 0;
+  transition:.3s;
+  display:flex;
+  flex-direction:column;
+}
+.cart-panel.open{bottom:0}
+body.light .cart-panel{background:#fff;color:#000}
+
+.cart-header{
+  display:flex;
+  justify-content:space-between;
+  padding:12px;
+  border-bottom:1px solid #333;
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:10px;
+}
+
+/* ---------- CART ROW ALIGNMENT FIX ---------- */
+.cart-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.cart-name{
+  flex:1;
+  font-size:14px;
+  line-height:1.3;
+}
+
+/* RIGHT SIDE: QTY + PRICE IN ONE LINE */
+.cart-qty{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.cart-qty button{
+  width:26px;
+  height:26px;
+  border:none;
+  border-radius:6px;
+  background:#f6c26b;
+  font-weight:bold;
+}
+
+.cart-qty span{
+  min-width:18px;
+  text-align:center;
+  font-weight:600;
+}
+
+.cart-price{
+  min-width:60px;
+  text-align:right;
+  font-weight:700;
+}
+
+.cart-total{
+  padding:10px;
+  font-weight:700;
+}
+
+.order-btn{
+  margin:10px;
+  padding:12px;
+  background:#22c55e;
+  border:none;
+  font-weight:700;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+.new-price {
+  color: #28c76f;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* SUBMARINE PRICE COLOR FIX */
+#submarine .old-price,
+#submarine .new-price {
+  color: #000 !important;
+}
+#wraps .old-price,
+#wraps .new-price {color: #000 !important;}
+#mini-hero .old-price,
+#mini-hero .new-price {
+  color: #000 !important;
+}
+#panini .old-price,
+#panini .new-price {
+  color: #000 !important;
+}
+#cheesy .old-price,
+#cheesy .new-price {
+  color: #000 !important;
+}
+#burger .old-price,
+#burger .new-price {
+  color: #000 !important;
+}
+#salad .old-price,
+#salad .new-price {
+  color: #000 !important;
+}
+#pav .old-price,
+#pav .new-price {
+  color: #000 !important;
+}
+#sliced .old-price,
+#sliced .new-price {
+  color: #000 !important;
+}
+#fries .old-price,
+#fries .new-price {
+  color: #000 !important;
+}
+#starter .old-price,
+#starter .new-price {
+  color: #000 !important;
+}
+#dessert .old-price,
+#dessert .new-price {
+  color: #000 !important;
+}
+/* ---------- TOAST ---------- */
+.toast{
+  position:fixed;
+  bottom:90px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#22c55e;
+  color:#000;
+  padding:8px 16px;
+  border-radius:20px;
+  opacity:0;
+  transition:.3s;
+  z-index:3000;
+}
+.toast.show{opacity:1}
+/* ================= ADDRESS POPUP ================= */
+.address-popup{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.address-box{
+  background: #fff;
+  color: #000;
+  width: 92%;
+  max-width: 360px;
+  padding: 16px;
+  border-radius: 12px;
+  box-sizing: border-box;   /* 🔥 important */
+}
+
+.address-box h3{
+  margin-top: 0;
+}
+
+.address-box textarea{
+  width: 100%;
+  height: 110px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-size: 14px;
+  box-sizing: border-box;  /* 🔥 important */
+}
+
+.address-actions{
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.address-actions button{
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.address-actions button:last-child{
+  background: #22c55e;
+  color: #000;
+}
+.cart-panel{
+  display:flex;
+  flex-direction:column;
+}
+
+.cart-body{
+  flex:1;
+  overflow-y:auto;
+  padding:10px;
+}
+
+.cart-footer{
+  border-top:1px solid #333;
+  padding:10px;
+  background:#111;
+}
+
+body.light .cart-footer{
+  background:#fff;
+}
+
+.order-btn{
+  width:100%;
+  padding:14px;
+  font-size:16px;
+  font-weight:700;
+  border-radius:10px;
+  border:none;
+  background:#22c55e;
+}
+.cart-addons .addon{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+.cart-addons button{
+  background:#f6c26b;
+  border:none;
+  padding:6px 10px;
+  border-radius:6px;
+  font-weight:600;
+}
+.address-box input{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:14px;
+  margin-bottom:10px;
+  box-sizing:border-box;
+}
+</style>
+
+<script>
+/* ---------------- DARK MODE ---------------- */
+document.getElementById("darkToggle").onclick=()=>{
+  document.body.classList.toggle("light");
+};
+
+/* ---------------- NAV ACTIVE ---------------- */
+const navBtns=document.querySelectorAll(".nav-btn");
+// ===== ACTIVE NAV ON SCROLL =====
+const sections = document.querySelectorAll(".section");
+
+window.addEventListener("scroll", () => {
+  let currentSection = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    const sectionHeight = section.offsetHeight;
+
+    if (
+      window.scrollY >= sectionTop &&
+      window.scrollY < sectionTop + sectionHeight
+    ) {
+      currentSection = section.id;
+    }
+  });
+
+  navBtns.forEach(btn => {
+    btn.classList.toggle(
+      "active",
+      btn.dataset.target === currentSection
+    );
+  });
+});
+navBtns.forEach(btn=>{
+  btn.onclick=()=>{
+    navBtns.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.target)
+      ?.scrollIntoView({behavior:"smooth"});
+  };
+});
+
+/* ---------------- CART LOGIC ---------------- */
+let cart={};
+let addons=[];
+
+function priceFromText(t){
+  return parseInt(t.replace(/\D/g,""));
+}
+
+function addToCart(btn) {
+
+  const itemDiv = btn.closest(".item");
+  const name = itemDiv.querySelector("h4").innerText;
+
+  let price = 0;
+  const newPrice = btn.querySelector(".new-price");
+  if (newPrice) {
+    price = Number(newPrice.innerText.replace("₹",""));
+  } else {
+    const match = btn.innerText.match(/₹\s*(\d+)/);
+    price = match ? Number(match[1]) : 0;
+  }
+
+  let variant = "";
+  if (btn.innerText.includes('4"')) variant = '4"';
+  if (btn.innerText.includes('8"')) variant = '8"';
+
+  const cartKey = name + variant;
+
+  if (!cart[cartKey]) {
+    cart[cartKey] = { name, variant, price, qty: 1 };
+  } else {
+    cart[cartKey].qty++;
+  }
+
+  // STORE ORIGINAL TEXT ONCE
+  if (!btn.dataset.original) {
+    btn.dataset.original = btn.innerHTML;
+  }
+
+  renderCart();
+  updateMenuButton(btn, cartKey);
+}
+
+function updateMenuButton(btn, cartKey) {
+
+  const item = cart[cartKey];
+  if (!item) return;
+
+  // 🔥 disable addToCart while in qty mode
+  btn.onclick = null;
+
+  btn.innerHTML = `
+    <span class="mini-btn">−</span>
+    <span class="mini-qty">${item.qty}</span>
+    <span class="mini-btn">+</span>
+  `;
+
+  // MINUS
+  btn.children[0].onclick = function(e){
+    e.stopPropagation();
+    changeQtyFromMenu(cartKey, -1, btn);
+  };
+
+  // PLUS
+  btn.children[2].onclick = function(e){
+    e.stopPropagation();
+    changeQtyFromMenu(cartKey, 1, btn);
+  };
+
+}
+function changeQtyFromMenu(cartKey, delta, btn) {
+
+  if (!cart[cartKey]) return;
+
+  const currentQty = cart[cartKey].qty;
+
+  // ---------- MINUS AT QTY 1 → REMOVE ----------
+  if (delta === -1 && currentQty === 1) {
+
+    delete cart[cartKey];
+
+    // MENU ITEM → restore price button
+    if (btn && btn.dataset && btn.dataset.original) {
+      btn.innerHTML = btn.dataset.original;
+      btn.onclick = function () {
+        addToCart(this);
+      };
+    }
+
+    // ADD-ON → nothing to restore, just re-render
+    renderCart();
+    return;
+  }
+
+  // ---------- BLOCK NEGATIVE ----------
+  if (delta === -1 && currentQty === 0) return;
+
+  // ---------- NORMAL CHANGE ----------
+  cart[cartKey].qty = currentQty + delta;
+
+  // update menu qty UI if exists
+  if (btn) {
+    const qtySpan = btn.querySelector(".mini-qty");
+    if (qtySpan) {
+      qtySpan.innerText = cart[cartKey].qty;
+    }
+  }
+
+  renderCart();
+}
+
+function renderCart() {
+  const cartItemsDiv = document.getElementById("cartItems");
+  const cartTotalSpan = document.getElementById("cartTotal");
+
+  cartItemsDiv.innerHTML = "";
+  let total = 0;
+
+  Object.keys(cart).forEach(key => {
+    const item = cart[key];
+
+    const row = document.createElement("div");
+    row.className = "cart-row";
+
+    // Name + Variant (if exists)
+    const nameDiv = document.createElement("div");
+    nameDiv.className = "cart-name";
+    nameDiv.innerText = item.variant
+      ? `${item.name} ${item.variant}`
+      : item.name;
+
+    // Qty controls
+    const qtyDiv = document.createElement("div");
+    qtyDiv.className = "cart-qty";
+
+    const minus = document.createElement("button");
+    minus.innerText = "−";
+    minus.onclick = () => changeQty(key, -1);
+
+    const qty = document.createElement("span");
+    qty.innerText = item.qty;
+
+    const plus = document.createElement("button");
+    plus.innerText = "+";
+    plus.onclick = () => changeQty(key, 1);
+
+    qtyDiv.appendChild(minus);
+    qtyDiv.appendChild(qty);
+    qtyDiv.appendChild(plus);
+
+    // Price
+    const priceDiv = document.createElement("div");
+    priceDiv.className = "cart-price";
+    const itemTotal = item.price * item.qty;
+    priceDiv.innerText = `₹${itemTotal}`;
+
+    total += itemTotal;
+
+    row.appendChild(nameDiv);
+    row.appendChild(qtyDiv);
+    row.appendChild(priceDiv);
+
+    cartItemsDiv.appendChild(row);
+  });
+
+  cartTotalSpan.innerText = `₹${total}`;
+}
+
+
+function changeQty(cartKey, delta) {
+
+  if (!cart[cartKey]) return;
+
+  const currentQty = cart[cartKey].qty;
+
+  // 🔥 MINUS AT QTY 1 → REMOVE ITEM DIRECTLY
+  if (delta === -1 && currentQty === 1) {
+    delete cart[cartKey];
+
+    // restore menu button if it exists
+    const allBtns = document.querySelectorAll(".actions button");
+
+    allBtns.forEach(btn => {
+      const itemDiv = btn.closest(".item");
+      const name = itemDiv.querySelector("h4").innerText;
+
+      let variant = "";
+      if (btn.dataset.original?.includes('4"')) variant = '4"';
+      if (btn.dataset.original?.includes('8"')) variant = '8"';
+
+      const key = name + variant;
+
+      if (key === cartKey && btn.dataset.original) {
+        btn.innerHTML = btn.dataset.original;
+        btn.onclick = function () {
+          addToCart(this);
+        };
+      }
+    });
+
+    renderCart();
+    return;
+  }
+
+  // 🔥 BLOCK NEGATIVE
+  if (delta === -1 && currentQty === 0) return;
+
+  // NORMAL CHANGE
+  cart[cartKey].qty = currentQty + delta;
+
+  // UPDATE MENU BUTTON IF EXISTS
+  const allBtns = document.querySelectorAll(".actions button");
+
+  allBtns.forEach(btn => {
+    const itemDiv = btn.closest(".item");
+    const name = itemDiv.querySelector("h4").innerText;
+
+    let variant = "";
+    if (btn.dataset.original?.includes('4"')) variant = '4"';
+    if (btn.dataset.original?.includes('8"')) variant = '8"';
+
+    const key = name + variant;
+
+    if (key === cartKey) {
+      updateMenuButton(btn, cartKey);
+    }
+  });
+
+  renderCart();
+}
+
+function addAddon(name, price) {
+  const key = `Addon | ${name}`;
+
+  if (!cart[key]) {
+    cart[key] = {
+      name: name + " Add-On",
+      price,
+      qty: 1,
+      variant: ""
+    };
+  } else {
+    cart[key].qty += 1;
+  }
+
+  renderCart();
+  showAddedPopup(name + " added");
+}
+
+/* ---------------- CART UI ---------------- */
+function openCart(){
+  document.getElementById("cartPanel").classList.add("open");
+}
+function closeCart(){
+  document.getElementById("cartPanel").classList.remove("open");
+}
+
+/* ---------------- WHATSAPP ---------------- */
+let pendingWhatsappMessage = "";
+
+function placeOrder() {
+  if (Object.keys(cart).length === 0) {
+    alert("Cart is empty");
+    return;
+  }
+
+  let message = "🛒 *New Order*\n\n";
+  let total = 0;
+
+  Object.values(cart).forEach(item => {
+    let lineTotal = item.price * item.qty;
+    total += lineTotal;
+
+    message += `• ${item.name}`;
+    if (item.variant) message += ` (${item.variant})`;
+    message += `\n  Qty: ${item.qty} × ₹${item.price} = ₹${lineTotal}\n\n`;
+  });
+
+  message += "--------------------\n";
+  message += `*Total Amount: ₹${total}*\n\n`;
+
+  // save plain text (NOT encoded)
+  pendingWhatsappMessage = message;
+
+  // open address popup
+  document.getElementById("addressPopup").style.display = "flex";
+}
+
+function closeAddressPopup(){
+  document.getElementById("addressPopup").classList.remove("show");
+}
+
+function confirmAddress() {
+  const name = document.getElementById("customerName").value.trim();
+  const address = document.getElementById("deliveryAddress").value.trim();
+
+  if (!name) {
+    alert("Please enter full name");
+    return;
+  }
+
+  let finalMessage =
+    pendingWhatsappMessage +
+    `👤 *Name:* ${name}\n\n` +
+    `📍 *Delivery Address:*\n${address}`;
+
+  const phone = "918920213648";
+
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
+
+  document.getElementById("addressPopup").style.display = "none";
+  window.open(url, "_blank");
+}
+
+/* ---------------- TOAST ---------------- */
+function toast(text) {
+  const t = document.getElementById("toast");
+  t.innerText = text;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 1500);
+}
+
+</script>
+
+
+</body>
+</html>
